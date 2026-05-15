@@ -1,9 +1,23 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Impact',
+  description: 'Read the stories of change and the achievements of Hope Charity Organization. See how your support is making a difference in children\'s lives.',
+};
+
+interface Story {
+  title: string;
+  img: string;
+  text: string;
+  order: 'normal' | 'reversed';
+}
 
 export default function OurImpact() {
-  const stories = [
+  const stories: Story[] = [
     {
       title: 'From Hunger to Hope: Feeding 10,000 Families',
       img: 'hungryfam.jpeg',
@@ -44,8 +58,14 @@ export default function OurImpact() {
           {stories.map((story, idx) => (
             <div className="row align-items-center mb-5 pb-5 border-bottom" key={idx}>
               <div className={`col-md-7 mb-5 mb-md-0 ${story.order === 'reversed' ? 'order-md-2' : ''}`}>
-                <div className="overflow-hidden rounded-lg shadow-lg">
-                  <img src={`/images/${story.img}`} alt={story.title} className="img-fluid w-100 transition-all hover-scale" />
+                <div className="overflow-hidden rounded-lg shadow-lg position-relative" style={{ height: '400px' }}>
+                  <Image 
+                    src={`/images/${story.img}`} 
+                    alt={story.title} 
+                    fill 
+                    className="transition-all hover-scale" 
+                    style={{ objectFit: 'cover' }} 
+                  />
                 </div>
               </div>
               <div className={`col-md-5 ${story.order === 'reversed' ? 'pe-md-5 order-md-1' : 'ps-md-5'}`}>
@@ -66,7 +86,6 @@ export default function OurImpact() {
         title="Your support creates impact. Help us reach the next 10,000 children."
         buttonText="See More Stories"
       />
-
     </>
   );
 }

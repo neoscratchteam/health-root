@@ -2,6 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home | Hope Charity Organization',
+  description: 'Every child deserves a chance to dream, grow, and thrive—together, we can make it happen.',
+};
 
 export default function Home() {
   return (
@@ -51,7 +57,7 @@ export default function Home() {
             {[
               { img: 'food.png', title: 'Charity For Education', desc: 'Providing the tools and resources for children to learn and excel in school.' },
               { img: 'book2.png', title: 'Food For Hungry', desc: 'Ensuring no child goes to bed hungry with our sustainable feeding programs.' },
-              { img: 'water (2).png', title: 'Treated Drinking Water', desc: 'Providing access to clean and safe drinking water for communities in need.', style: { width: '30px' } },
+              { img: 'water (2).png', title: 'Treated Drinking Water', desc: 'Providing access to clean and safe drinking water for communities in need.', style: { width: '30px', height: '30px' } },
               { img: 'medical2.png', title: 'Medical Checkups', desc: 'Regular health screenings and medical support for vulnerable children.' },
               { img: 'house2.png', title: 'Good Shelter', desc: 'Building safe and secure homes for families and displaced children.' },
               { img: 'love2.png', title: 'Give Love', desc: 'Emotional support and a nurturing environment for every child in our care.' },
@@ -59,7 +65,13 @@ export default function Home() {
               <div className="col-md-4" key={idx}>
                 <div className="service-card p-4 bg-white rounded shadow-sm border-0 h-100 text-center transition-all hover-shadow">
                   <div className="icon-wrap mb-4 d-inline-block p-3 rounded-circle" style={{ backgroundColor: 'rgba(0,121,107,0.1)' }}>
-                    <img src={`/images/${item.img}`} alt={item.title} style={item.style || { width: '50px' }} />
+                    <Image 
+                      src={`/images/${item.img}`} 
+                      alt={item.title} 
+                      width={50} 
+                      height={50} 
+                      style={item.style || { objectFit: 'contain' }}
+                    />
                   </div>
                   <h3 className="h4 fw-bold mb-3">{item.title}</h3>
                   <p className="text-muted">{item.desc}</p>
@@ -73,8 +85,13 @@ export default function Home() {
       <div className="site-section bg-white">
         <div className="container">
           <div className="row donation-section align-items-center bg-light rounded-lg overflow-hidden shadow-lg mx-0">
-            <div className="col-md-6 px-0">
-              <img src="/images/about1.jpg" alt="Child Image" className="img-fluid" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className="col-md-6 px-0 position-relative" style={{ minHeight: '400px' }}>
+              <Image 
+                src="/images/about1.jpg" 
+                alt="Child Image" 
+                fill 
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             <div className="col-md-6 p-5">
               <div className="donation-text">
@@ -102,8 +119,14 @@ export default function Home() {
             ].map((cause, idx) => (
               <div className="col-12 col-sm-6 col-md-6 col-lg-4 mb-4" key={idx}>
                 <div className="card fundraise-item border-0 shadow-sm rounded-lg overflow-hidden h-100">
-                  <Link href="/what-we-do" className="overflow-hidden">
-                    <img className="card-img-top transition-all hover-scale" src={`/images/${cause.img}`} alt={cause.title} style={{ height: '250px', objectFit: 'cover' }} />
+                  <Link href="/what-we-do" className="overflow-hidden position-relative" style={{ display: 'block', height: '250px' }}>
+                    <Image 
+                      className="transition-all hover-scale" 
+                      src={`/images/${cause.img}`} 
+                      alt={cause.title} 
+                      fill 
+                      style={{ objectFit: 'cover' }} 
+                    />
                   </Link>
                   <div className="card-body p-4">
                     <h3 className="h5 fw-bold mb-3"><Link href="/what-we-do" className="text-dark text-decoration-none">{cause.title}</Link></h3>
@@ -118,7 +141,6 @@ export default function Home() {
       </div>
 
       <CTASection />
-
     </>
   );
 }

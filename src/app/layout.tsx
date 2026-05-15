@@ -16,6 +16,7 @@ import "../styles/fancybox.min.css";
 import "../styles/style.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Metadata } from "next";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -29,12 +30,22 @@ const dosis = Dosis({
   variable: "--font-dosis",
 });
 
-export const metadata = {
-  title: "Hope - Charity Organization",
-  description: "Every child deserves a chance to dream, grow, and thrive.",
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Hope Charity Organization',
+    default: 'Hope - Charity Organization',
+  },
+  description: "Every child deserves a chance to dream, grow, and thrive. Join us in making a difference in children's lives worldwide.",
+  keywords: ["charity", "donation", "children", "hope", "volunteer", "education", "nutrition"],
+  authors: [{ name: "Hope Charity" }],
+  viewport: "width=device-width, initial-scale=1",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${overpass.variable} ${dosis.variable}`}>
       <body className={overpass.className}>

@@ -1,9 +1,22 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Stay updated with the latest news, success stories, and the impact of Hope Charity Organization around the world.',
+};
+
+interface Post {
+  img: string;
+  date: string;
+  title: string;
+}
 
 export default function Blog() {
-  const posts = [
+  const posts: Post[] = [
     { img: 'ga3.jpg', date: 'May 12, 2026', title: 'Great increase in homelessness among children in the USA' },
     { img: 'ga6.jpg', date: 'May 10, 2026', title: 'Unsafe water sources remain a significant global health concern' },
     { img: 'ga8.jpg', date: 'May 08, 2026', title: 'About 10.2M pry school-aged kids in Nigeria are not in school' },
@@ -33,11 +46,17 @@ export default function Blog() {
             {posts.map((post, idx) => (
               <div className="col-12 col-sm-6 col-lg-4 mb-5" key={idx}>
                 <div className="card fundraise-item shadow-sm border-0 h-100 rounded-lg overflow-hidden transition-all hover-shadow">
-                  <div className="position-relative overflow-hidden">
+                  <div className="position-relative overflow-hidden" style={{ height: '240px' }}>
                     <Link href="/blog">
-                      <img className="card-img-top transition-all hover-scale" src={`/images/${post.img}`} alt={post.title} style={{ height: '240px', objectFit: 'cover' }} />
+                      <Image 
+                        className="transition-all hover-scale" 
+                        src={`/images/${post.img}`} 
+                        alt={post.title} 
+                        fill 
+                        style={{ objectFit: 'cover' }} 
+                      />
                     </Link>
-                    <div className="position-absolute bottom-0 start-0 bg-primary text-white px-3 py-1 small fw-bold">
+                    <div className="position-absolute bottom-0 start-0 bg-primary text-white px-3 py-1 small fw-bold" style={{ zIndex: 1 }}>
                       {post.date}
                     </div>
                   </div>
@@ -65,7 +84,6 @@ export default function Blog() {
         title="Subscribe to our newsletter for weekly updates on our impact."
         buttonText="Subscribe Now"
       />
-
     </>
   );
 }

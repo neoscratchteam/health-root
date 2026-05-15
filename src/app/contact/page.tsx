@@ -1,4 +1,10 @@
 import Hero from '@/components/Hero';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Get in touch with Hope Charity Organization. Send us a message, find our location, or reach out via phone or email.',
+};
 
 export default function Contact() {
   return (
@@ -60,7 +66,7 @@ export default function Contact() {
                   </div>
                   <div className="form-group mb-4">
                     <label className="text-dark small fw-bold mb-2">Message</label>
-                    <textarea name="" id="" cols="30" rows="5" className="form-control px-4 py-3 rounded border-0 shadow-sm" placeholder="Write your message here..."></textarea>
+                    <textarea name="" id="" cols={30} rows={5} className="form-control px-4 py-3 rounded border-0 shadow-sm" placeholder="Write your message here..."></textarea>
                   </div>
                   <div className="form-group">
                     <input type="submit" value="Send Message" className="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow-sm w-100" />
@@ -76,7 +82,7 @@ export default function Contact() {
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                 ></iframe>
               </div>
@@ -84,7 +90,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

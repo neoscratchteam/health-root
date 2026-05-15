@@ -1,9 +1,30 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'What We Do',
+  description: 'Explore the programs and initiatives of Hope Charity Organization, including providing shelter, nutrition, and emotional support to children in need.',
+};
+
+interface Feature {
+  num: string;
+  title: string;
+  desc: string;
+}
+
+interface Cause {
+  img: string;
+  title: string;
+  progress: number;
+  raised: string;
+  goal: string;
+}
 
 export default function WhatWeDo() {
-  const features = [
+  const features: Feature[] = [
     { 
       num: '01', 
       title: 'Providing Shelter', 
@@ -21,7 +42,7 @@ export default function WhatWeDo() {
     },
   ];
 
-  const causes = [
+  const causes: Cause[] = [
     { img: 'wed7.jpg', title: 'Help us to Send Food', progress: 70, raised: '$6,000.00', goal: '$9,000.00' },
     { img: 'wed2.jpg', title: 'Clothes For Everyone', progress: 30, raised: '$2,000.00', goal: '$9,000.00' },
     { img: 'wed3.jpg', title: 'Help Us Provide Treated Water', progress: 55, raised: '$6,500.00', goal: '$9,000.00' },
@@ -79,8 +100,14 @@ export default function WhatWeDo() {
             {causes.map((cause, idx) => (
               <div className="col-lg-4 col-md-6 mb-4" key={idx}>
                 <div className="single_cause bg-white rounded-lg shadow-sm overflow-hidden h-100 transition-all hover-shadow border-0">
-                  <div className="thumb overflow-hidden" style={{ height: '220px' }}>
-                    <img src={`/images/${cause.img}`} alt={cause.title} className="w-100 h-100 object-fit-cover transition-all hover-scale" />
+                  <div className="thumb overflow-hidden position-relative" style={{ height: '220px' }}>
+                    <Image 
+                      src={`/images/${cause.img}`} 
+                      alt={cause.title} 
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      className="transition-all hover-scale" 
+                    />
                   </div>
                   <div className="causes_content p-4">
                     <div className="custom_progress_bar mb-4">
@@ -94,8 +121,8 @@ export default function WhatWeDo() {
                           role="progressbar" 
                           style={{ width: `${cause.progress}%`, backgroundColor: '#00796b' }} 
                           aria-valuenow={cause.progress} 
-                          aria-valuemin="0" 
-                          aria-valuemax="100"
+                          aria-valuemin={0} 
+                          aria-valuemax={100}
                         ></div>
                       </div>
                     </div>
@@ -125,7 +152,6 @@ export default function WhatWeDo() {
         title="Be part of the solution. Your donation can change a life today."
         buttonText="Donate to a Cause"
       />
-
     </>
   );
 }

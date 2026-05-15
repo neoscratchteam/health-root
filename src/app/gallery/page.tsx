@@ -1,9 +1,21 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Gallery',
+  description: 'Explore the journey of Hope Charity Organization through images capturing moments of transformation, resilience, and global impact.',
+};
+
+interface GalleryImage {
+  src: string;
+  title: string;
+}
 
 export default function Gallery() {
-  const images = [
+  const images: GalleryImage[] = [
     { src: 'ga1.jpg', title: 'Community Support' },
     { src: 'ga2.jpg', title: 'Educational Initiatives' },
     { src: 'ga3.jpg', title: 'Shelter Projects' },
@@ -38,9 +50,15 @@ export default function Gallery() {
           <div className="row g-4">
             {images.map((img, idx) => (
               <div className="col-md-6 col-lg-4" key={idx}>
-                <div className="gallery-item position-relative overflow-hidden rounded-lg shadow-sm">
-                  <img src={`/images/${img.src}`} alt={img.title} className="img-fluid w-100 transition-all" style={{ height: '300px', objectFit: 'cover' }} />
-                  <div className="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-all">
+                <div className="gallery-item position-relative overflow-hidden rounded-lg shadow-sm" style={{ height: '300px' }}>
+                  <Image 
+                    src={`/images/${img.src}`} 
+                    alt={img.title} 
+                    fill 
+                    className="transition-all hover-scale" 
+                    style={{ objectFit: 'cover' }} 
+                  />
+                  <div className="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-all" style={{ zIndex: 1 }}>
                     <div className="text-center p-3">
                       <h3 className="h5 text-white fw-bold mb-2">{img.title}</h3>
                       <Link href={`/images/${img.src}`} className="btn btn-sm btn-white rounded-pill px-4" target="_blank">View Large</Link>
@@ -57,7 +75,6 @@ export default function Gallery() {
         title="Be part of our next chapter. Help us create more beautiful stories."
         buttonText="Support Our Work"
       />
-
     </>
   );
 }

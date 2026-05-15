@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import React from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,14 +40,28 @@ export default function Footer() {
           <div className="col-lg-3 col-md-6">
             <h3 className="h5 fw-bold mb-4 text-white">Recent Posts</h3>
             <div className="recent-post mb-3 d-flex gap-3">
-              <img src="/images/wed2.jpg" alt="" className="rounded shadow-sm" style={{ width: '60px', height: '60px', objectFit: 'cover' }} />
+              <div className="position-relative overflow-hidden rounded shadow-sm" style={{ width: '60px', height: '60px' }}>
+                <Image 
+                  src="/images/wed2.jpg" 
+                  alt="Recent Post" 
+                  fill 
+                  style={{ objectFit: 'cover' }} 
+                />
+              </div>
               <div>
                 <Link href="/blog" className="text-white text-decoration-none small fw-bold d-block hover-text-primary transition-all">Just a Little Help Can Go a Long Way</Link>
                 <small className="text-muted">May 12, 2026</small>
               </div>
             </div>
             <div className="recent-post mb-3 d-flex gap-3">
-              <img src="/images/wed4.jpg" alt="" className="rounded shadow-sm" style={{ width: '60px', height: '60px', objectFit: 'cover' }} />
+              <div className="position-relative overflow-hidden rounded shadow-sm" style={{ width: '60px', height: '60px' }}>
+                <Image 
+                  src="/images/wed4.jpg" 
+                  alt="Recent Post" 
+                  fill 
+                  style={{ objectFit: 'cover' }} 
+                />
+              </div>
               <div>
                 <Link href="/blog" className="text-white text-decoration-none small fw-bold d-block hover-text-primary transition-all">Life Is Short So Be Kind</Link>
                 <small className="text-muted">May 10, 2026</small>
@@ -78,7 +94,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-
     </footer>
   );
 }

@@ -1,6 +1,13 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Learn about Hope Charity Organization, our story, our vision, and the passionate individuals who lead our mission.',
+};
 
 export default function About() {
   return (
@@ -15,8 +22,14 @@ export default function About() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-md-7 order-md-2 mb-5 mb-md-0">
-              <div className="position-relative">
-                <img src="/images/Operation Christmas Child in Madagascar_.jpg" alt="Our Story" className="img-fluid rounded shadow-lg" />
+              <div className="position-relative" style={{ minHeight: '400px' }}>
+                <Image 
+                  src="/images/Operation Christmas Child in Madagascar_.jpg" 
+                  alt="Our Story" 
+                  fill 
+                  className="rounded shadow-lg" 
+                  style={{ objectFit: 'cover' }}
+                />
                 <div className="position-absolute" style={{ top: '-20px', left: '-20px', width: '100px', height: '100px', backgroundColor: '#00796b', zIndex: -1, borderRadius: '10px' }}></div>
               </div>
             </div>
@@ -48,12 +61,13 @@ export default function About() {
             ].map((member, idx) => (
               <div className="col-md-6 col-lg-3 mb-4" key={idx}>
                 <div className="block-38 text-center bg-light p-4 rounded shadow-sm hover-shadow transition-all h-100">
-                  <div className="block-38-img mb-4">
-                    <img 
+                  <div className="block-38-img mb-4 position-relative mx-auto" style={{ width: '150px', height: '150px' }}>
+                    <Image 
                       src={`/images/${member.img}`} 
                       alt={member.name} 
+                      fill
                       className="rounded-circle shadow" 
-                      style={{ width: '150px', height: '150px', objectFit: 'cover' }} 
+                      style={{ objectFit: 'cover' }} 
                     />
                   </div>
                   <div className="block-38-header">
@@ -75,7 +89,6 @@ export default function About() {
         buttonText="Get Involved"
         buttonLink="/contact"
       />
-
     </>
   );
 }
