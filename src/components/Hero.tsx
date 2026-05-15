@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface HeroProps {
@@ -8,6 +10,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compact = false }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div className="block-31" style={{ position: 'relative' }}>
       <div 
@@ -18,7 +22,8 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
           justifyContent: 'center',
           minHeight: compact ? '400px' : '80vh',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          backgroundColor: '#1a1a1a' // Dark background while loading
         }}
       >
         <Image
@@ -26,7 +31,16 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
           alt={title}
           fill
           priority
-          style={{ objectFit: 'cover', zIndex: -1 }}
+          quality={95}
+          onLoadingComplete={() => setIsLoaded(true)}
+          style={{ 
+            objectFit: 'cover', 
+            zIndex: -1,
+            opacity: isLoaded ? 1 : 0,
+            transition: 'opacity 0.8s ease-in-out',
+            transform: isLoaded ? 'scale(1)' : 'scale(1.05)',
+            filter: isLoaded ? 'none' : 'blur(10px)'
+          }}
           sizes="100vw"
         />
         <div 
@@ -48,8 +62,11 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
                 style={{ 
                   color: '#fff', 
                   fontWeight: 'bold',
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.6)',
-                  fontSize: compact ? '2.5rem' : '3.5rem'
+                  textShadow: '2px 2px 12px rgba(0,0,0,0.7)',
+                  fontSize: compact ? '2.8rem' : '3.8rem',
+                  letterSpacing: '-0.02em',
+                  opacity: isLoaded ? 1 : 0,
+                  transition: 'opacity 0.5s ease-out 0.3s'
                 }}
               >
                 {title}
