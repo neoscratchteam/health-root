@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { X, CreditCard, Smartphone, Check, ChevronDown, DollarSign } from 'lucide-react';
+import { X, CreditCard, Smartphone, Check, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 interface DonationModalProps {
@@ -32,10 +32,9 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [momoNumber, setMomoNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
+  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[1]); // Default to Rwanda
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
 
-  // Card detection logic
   useEffect(() => {
     const number = cardNumber.replace(/\s?/g, '');
     if (/^4/.test(number)) setCardType('visa');
@@ -61,7 +60,21 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
   return (
     <>
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+      <div 
+        className="donation-modal-container" 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 10000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px'
+        }}
+      >
         {/* Backdrop */}
         <motion.div 
           key="backdrop"
@@ -69,167 +82,172 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            backdropFilter: 'blur(5px)'
+          }}
         />
 
-        {/* Modal */}
+        {/* Modal Content */}
         <motion.div 
           key="modal-content"
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-white rounded-2xl shadow-2xl"
-          style={{ fontFamily: 'inherit' }}
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '500px',
+            backgroundColor: '#fff',
+            borderRadius: '20px',
+            overflow: 'hidden',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+          }}
         >
           {/* Header */}
-          <div className="p-6 bg-primary text-white flex justify-between items-center">
+          <div className="p-4" style={{ backgroundColor: 'var(--primary)', color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <h2 className="text-2xl font-bold m-0">Make a Donation</h2>
-              <p className="text-white/80 text-sm mb-0">Your support saves lives</p>
+              <h2 className="h4 fw-bold mb-0">Support Health Root NGO</h2>
+              <p className="small mb-0 opacity-75">Your donation makes a difference</p>
             </div>
-            <button 
-              onClick={onClose}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors border-0 bg-transparent text-white"
-            >
-              <X size={24} />
-            </button>
+            <button onClick={onClose} className="btn border-0 text-white p-0" style={{ fontSize: '24px' }}><X size={24} /></button>
           </div>
 
-          <div className="p-6">
+          <div className="p-4">
             {step === 1 ? (
-              <motion.div key="step1" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
-                <h3 className="text-lg font-bold mb-4 text-dark">Select Amount ($)</h3>
-                <div className="grid grid-cols-3 gap-3 mb-4">
+              <motion.div key="step1">
+                <h3 className="h6 fw-bold mb-3">Select Amount ($)</h3>
+                <div className="row g-2 mb-3">
                   {PREDEFINED_AMOUNTS.map((amt) => (
-                    <button
-                      key={amt}
-                      onClick={() => handleAmountSelect(amt)}
-                      className={`py-3 px-4 rounded-xl border-2 font-bold transition-all ${
-                        amount === amt 
-                          ? 'border-primary bg-primary/5 text-primary' 
-                          : 'border-gray-100 text-gray-500 hover:border-gray-200'
-                      }`}
-                    >
-                      ${amt}
-                    </button>
+                    <div className="col-4" key={amt}>
+                      <button
+                        onClick={() => handleAmountSelect(amt)}
+                        className={`btn w-100 py-3 fw-bold transition-all ${
+                          amount === amt 
+                            ? 'btn-primary' 
+                            : 'btn-outline-light text-dark border-1'
+                        }`}
+                        style={amount === amt ? {} : { borderColor: '#eee' }}
+                      >
+                        ${amt}
+                      </button>
+                    </div>
                   ))}
                 </div>
-                <div className="relative mb-6">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
-                  <input
-                    type="number"
-                    placeholder="Other Amount"
-                    value={customAmount}
-                    onChange={handleCustomAmountChange}
-                    className="w-full pl-8 pr-4 py-4 rounded-xl border-2 border-gray-100 focus:border-primary focus:outline-none font-bold text-lg"
-                  />
+                <div className="mb-4">
+                  <div className="input-group">
+                    <span className="input-group-text bg-white border-end-0">$</span>
+                    <input
+                      type="number"
+                      className="form-control border-start-0 py-3 fw-bold"
+                      placeholder="Custom Amount"
+                      value={customAmount}
+                      onChange={handleCustomAmountChange}
+                    />
+                  </div>
                 </div>
 
                 <button
                   onClick={() => setStep(2)}
                   disabled={!amount || Number(amount) <= 0}
-                  className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-primary/30 transition-all disabled:opacity-50 border-0"
+                  className="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-lg disabled:opacity-50"
                 >
-                  Continue to Payment
+                  Proceed to Payment
                 </button>
               </motion.div>
             ) : (
-              <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
-                <div className="flex gap-4 mb-6 p-1 bg-gray-100 rounded-xl">
+              <motion.div key="step2">
+                <div className="d-flex mb-4 bg-light rounded-pill p-1">
                   <button
                     onClick={() => setPaymentMethod('card')}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all border-0 ${
-                      paymentMethod === 'card' ? 'bg-white shadow-sm text-primary' : 'text-gray-500 bg-transparent'
+                    className={`btn flex-fill rounded-pill fw-bold border-0 ${
+                      paymentMethod === 'card' ? 'bg-white shadow-sm text-primary' : 'text-muted'
                     }`}
                   >
-                    <CreditCard size={20} />
-                    Card
+                    <CreditCard size={18} className="me-2" /> Card
                   </button>
                   <button
                     onClick={() => setPaymentMethod('momo')}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all border-0 ${
-                      paymentMethod === 'momo' ? 'bg-white shadow-sm text-primary' : 'text-gray-500 bg-transparent'
+                    className={`btn flex-fill rounded-pill fw-bold border-0 ${
+                      paymentMethod === 'momo' ? 'bg-white shadow-sm text-primary' : 'text-muted'
                     }`}
                   >
-                    <Smartphone size={20} />
-                    Mobile Money
+                    <Smartphone size={18} className="me-2" /> Mobile Money
                   </button>
                 </div>
 
                 {paymentMethod === 'card' ? (
-                  <div className="space-y-4">
-                    <div className="relative">
-                      <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Card Number</label>
-                      <input
-                        type="text"
-                        value={formatCardNumber(cardNumber)}
-                        onChange={(e) => setCardNumber(e.target.value)}
-                        placeholder="0000 0000 0000 0000"
-                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-100 focus:border-primary focus:outline-none font-medium"
-                        maxLength={19}
-                      />
-                      <div className="absolute right-4 bottom-3 flex gap-2">
-                        <span className={`transition-opacity ${cardType === 'visa' ? 'opacity-100' : 'opacity-20'}`}>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" width={30} />
-                        </span>
-                        <span className={`transition-opacity ${cardType === 'mastercard' ? 'opacity-100' : 'opacity-20'}`}>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" width={30} />
-                        </span>
-                        <span className={`transition-opacity ${cardType === 'amex' ? 'opacity-100' : 'opacity-20'}`}>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" width={25} />
-                        </span>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Expiry Date</label>
+                  <div className="card-fields">
+                    <div className="mb-3">
+                      <label className="form-label small fw-bold text-muted text-uppercase">Card Number</label>
+                      <div className="position-relative">
                         <input
                           type="text"
+                          className="form-control py-2"
+                          value={formatCardNumber(cardNumber)}
+                          onChange={(e) => setCardNumber(e.target.value)}
+                          placeholder="0000 0000 0000 0000"
+                          maxLength={19}
+                        />
+                        <div className="position-absolute end-0 top-50 translate-middle-y pe-3 d-flex gap-2">
+                          {cardType === 'visa' && <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" width={30} />}
+                          {cardType === 'mastercard' && <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" width={30} />}
+                          {cardType === 'amex' && <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" width={25} />}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-6">
+                        <label className="form-label small fw-bold text-muted text-uppercase">Expiry</label>
+                        <input
+                          type="text"
+                          className="form-control"
                           placeholder="MM / YY"
                           value={expiry}
                           onChange={(e) => setExpiry(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border-2 border-gray-100 focus:border-primary focus:outline-none font-medium"
                           maxLength={5}
                         />
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold text-gray-400 uppercase mb-1">CVC / CVV</label>
+                      <div className="col-6">
+                        <label className="form-label small fw-bold text-muted text-uppercase">CVC</label>
                         <input
                           type="text"
+                          className="form-control"
                           placeholder="123"
                           value={cvc}
                           onChange={(e) => setCvc(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border-2 border-gray-100 focus:border-primary focus:outline-none font-medium"
                           maxLength={4}
                         />
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-400 uppercase mb-1">Phone Number</label>
-                      <div className="flex gap-2">
-                        <div className="relative">
+                  <div className="momo-fields">
+                    <div className="mb-3">
+                      <label className="form-label small fw-bold text-muted text-uppercase">Phone Number</label>
+                      <div className="d-flex gap-2">
+                        <div className="dropdown">
                           <button
+                            className="btn btn-outline-light text-dark border d-flex align-items-center gap-2"
                             onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                            className="h-full px-3 py-3 rounded-lg border-2 border-gray-100 bg-white flex items-center gap-2 font-medium hover:border-gray-200 transition-all border-0"
                           >
-                            <span>{selectedCountry.flag}</span>
-                            <span>{selectedCountry.code}</span>
-                            <ChevronDown size={14} />
+                            {selectedCountry.flag} {selectedCountry.code} <ChevronDown size={14} />
                           </button>
-                          
                           {isCountryDropdownOpen && (
-                            <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-100 rounded-lg shadow-xl z-50 overflow-hidden">
+                            <div className="dropdown-menu show shadow-lg border-0 mt-1" style={{ position: 'absolute' }}>
                               {COUNTRIES.map((c) => (
                                 <button
                                   key={c.code}
+                                  className="dropdown-item d-flex align-items-center gap-2"
                                   onClick={() => {
                                     setSelectedCountry(c);
                                     setIsCountryDropdownOpen(false);
                                   }}
-                                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2 text-sm border-0 bg-transparent"
                                 >
                                   <span>{c.flag}</span>
                                   <span>{c.name} ({c.code})</span>
@@ -240,33 +258,32 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                         </div>
                         <input
                           type="tel"
+                          className="form-control"
+                          placeholder="Phone Number"
                           value={momoNumber}
                           onChange={(e) => setMomoNumber(e.target.value)}
-                          placeholder="Phone Number"
-                          className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-100 focus:border-primary focus:outline-none font-medium"
                         />
                       </div>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg flex items-start gap-3">
-                      <div className="mt-1 text-primary"><Check size={16} /></div>
-                      <p className="text-xs text-gray-500 mb-0">A push notification will be sent to your phone to authorize this transaction.</p>
+                    <div className="alert alert-info py-2 small d-flex gap-2 align-items-center">
+                      <Check size={16} /> <span>A push notification will be sent to your phone.</span>
                     </div>
                   </div>
                 )}
 
-                <div className="mt-8 flex gap-3">
+                <div className="d-flex gap-2 mt-4">
                   <button
                     onClick={() => setStep(1)}
-                    className="flex-1 py-4 bg-gray-100 text-gray-600 rounded-xl font-bold hover:bg-gray-200 transition-all border-0"
+                    className="btn btn-light px-4 rounded-pill fw-bold"
                   >
                     Back
                   </button>
                   <button
                     onClick={() => {
-                      alert('Processing payment...');
+                      alert('Processing payment of $' + amount);
                       onClose();
                     }}
-                    className="flex-[2] py-4 bg-primary text-white rounded-xl font-bold shadow-lg hover:shadow-primary/30 transition-all border-0"
+                    className="btn btn-primary flex-grow-1 rounded-pill fw-bold shadow"
                   >
                     Donate ${amount} Now
                   </button>
@@ -277,12 +294,10 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
         </motion.div>
       </div>
 
-      <style jsx global>{`
-        .bg-primary { background-color: var(--primary) !important; }
-        .text-primary { color: var(--primary) !important; }
-        .border-primary { border-color: var(--primary) !important; }
-        .bg-primary\/5 { background-color: rgba(var(--primary-rgb), 0.05) !important; }
-        .shadow-primary\/30 { box-shadow: 0 10px 15px -3px rgba(var(--primary-rgb), 0.3) !important; }
+      <style jsx>{`
+        .btn-primary { background-color: var(--primary); border-color: var(--primary); }
+        .btn-primary:hover { background-color: var(--secondary); border-color: var(--secondary); }
+        .text-primary { color: var(--primary); }
       `}</style>
     </>
   );

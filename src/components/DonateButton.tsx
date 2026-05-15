@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useDonation } from '@/context/DonationContext';
+import Link from 'next/link';
 
 interface DonateButtonProps {
   className?: string;
@@ -9,14 +9,12 @@ interface DonateButtonProps {
 }
 
 export default function DonateButton({ className, children }: DonateButtonProps) {
-  const { openDonation } = useDonation();
-
   return (
-    <button 
-      onClick={openDonation}
+    <Link 
+      href="/donate"
       className={className || "btn btn-primary px-5 py-3 rounded-pill fw-bold shadow"}
     >
       {children || 'Donate Now'}
-    </button>
+    </Link>
   );
 }

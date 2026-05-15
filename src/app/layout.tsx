@@ -17,7 +17,6 @@ import "../styles/style.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
-import DonationWrapper from "@/components/DonationWrapper";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -50,11 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overpass.variable} ${dosis.variable}`}>
       <body className={overpass.className}>
-        <DonationWrapper>
-          <Navbar />
-          {children}
-          <Footer />
-        </DonationWrapper>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

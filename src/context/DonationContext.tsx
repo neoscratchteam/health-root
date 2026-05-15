@@ -13,8 +13,15 @@ const DonationContext = createContext<DonationContextType | undefined>(undefined
 export function DonationProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openDonation = () => setIsOpen(true);
-  const closeDonation = () => setIsOpen(false);
+  const openDonation = () => {
+    alert('Opening Donation Modal');
+    console.log('Opening Donation Modal');
+    setIsOpen(true);
+  };
+  const closeDonation = () => {
+    console.log('Closing Donation Modal');
+    setIsOpen(false);
+  };
 
   return (
     <DonationContext.Provider value={{ openDonation, closeDonation, isOpen }}>

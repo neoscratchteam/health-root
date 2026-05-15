@@ -7,11 +7,8 @@ import DonationModal from '@/components/DonationModal';
 
 function ModalRenderer() {
   const { isOpen, closeDonation } = useDonation();
-  return (
-    <AnimatePresence>
-      {isOpen && <DonationModal isOpen={isOpen} onClose={closeDonation} key="donation-modal" />}
-    </AnimatePresence>
-  );
+  if (!isOpen) return null;
+  return <DonationModal isOpen={isOpen} onClose={closeDonation} />;
 }
 
 export default function DonationWrapper({ children }: { children: React.ReactNode }) {

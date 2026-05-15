@@ -4,13 +4,12 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { useDonation } from '@/context/DonationContext';
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const { openDonation } = useDonation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,15 +63,13 @@ export default function Navbar() {
               </li>
             ))}
             <li className="nav-item ms-lg-3">
-              <button 
-                onClick={() => {
-                  openDonation();
-                  setIsOpen(false);
-                }}
+              <Link 
+                href="/donate"
                 className="btn btn-primary rounded-pill px-4 py-2 fw-bold text-uppercase small border-0"
+                onClick={() => setIsOpen(false)}
               >
                 Donate
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
