@@ -5,8 +5,8 @@ import CTASection from '@/components/CTASection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gallery',
-  description: 'Explore the journey of Hope Charity Organization through images capturing moments of transformation, resilience, and global impact.',
+  title: 'Gallery | Health Root NGO',
+  description: 'Explore the journey of Health Root NGO through images capturing our activities in health awareness, youth empowerment, and community development.',
 };
 
 interface GalleryImage {
@@ -16,18 +16,18 @@ interface GalleryImage {
 
 export default function Gallery() {
   const images: GalleryImage[] = [
-    { src: 'ga1.jpg', title: 'Community Support' },
-    { src: 'ga2.jpg', title: 'Educational Initiatives' },
-    { src: 'ga3.jpg', title: 'Shelter Projects' },
-    { src: 'ga4.jpg', title: 'Healthcare Access' },
-    { src: 'ga5.jpg', title: 'Clean Water Program' },
-    { src: 'gal3.jpg', title: 'Child Mentorship' },
-    { src: 'ga7.jpg', title: 'Nutrition Support' },
-    { src: 'gal.jpeg', title: 'Volunteer Work' },
-    { src: 'gal2.jpeg', title: 'Global Impact' },
-    { src: 'Malawi children.jpg', title: 'School Building' },
-    { src: 'ga11.jpg', title: 'Rural Outreach' },
-    { src: 'ga12.jpg', title: 'Future Leaders' }
+    { src: 'ga1.jpg', title: 'Health Awareness Campaign' },
+    { src: 'ga2.jpg', title: 'School Outreach' },
+    { src: 'ga6.jpg', title: 'Community Clean-Up' },
+    { src: 'ga8.jpg', title: 'Youth Training Program' },
+    { src: 'ga11.jpg', title: 'Tree Planting' },
+    { src: 'ga13.jpg', title: 'Mental Wellness Session' },
+    { src: 'ga7.jpg', title: 'Nutrition Workshop' },
+    { src: 'gal.jpeg', title: 'Volunteer Activities' },
+    { src: 'gal3.jpg', title: 'Youth Mentorship' },
+    { src: 'ga3.jpg', title: 'Community Outreach' },
+    { src: 'ga12.jpg', title: 'Leadership Seminar' },
+    { src: 'ga4.jpg', title: 'Health Education' }
   ];
 
   return (
@@ -41,9 +41,9 @@ export default function Gallery() {
       <div className="site-section bg-white">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold mb-3">Capturing Moments of Hope</h2>
+            <h2 className="display-5 fw-bold mb-3">Activities in Action</h2>
             <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>
-              Explore our journey through these images. Each photo tells a story of transformation, resilience, and the impact of your support.
+              Explore our journey through these images. Each photo captured during our health campaigns, sanitation activities, and training sessions.
             </p>
           </div>
 
@@ -72,8 +72,8 @@ export default function Gallery() {
       </div>
 
       <CTASection 
-        title="Be part of our next chapter. Help us create more beautiful stories."
-        buttonText="Support Our Work"
+        title="Join our next activity and help build a healthier community."
+        buttonText="Get Involved"
       />
     </>
   );

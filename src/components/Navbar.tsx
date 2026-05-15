@@ -4,10 +4,13 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
+import { useDonation } from '@/context/DonationContext';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { openDonation } = useDonation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,8 +38,8 @@ export default function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark fixed-top transition-all ${scrolled ? 'bg-dark shadow-lg py-2' : 'bg-transparent py-4'}`} id="ftco-navbar">
       <div className="container">
-        <Link href="/" className="navbar-brand fw-bold fs-3">
-          HOPE<span className="text-primary">.</span>
+        <Link href="/" className="navbar-brand fw-bold fs-3 text-white">
+          HEALTH ROOT<span className="text-secondary"> NGO</span>
         </Link>
         <button 
           className="navbar-toggler border-0 shadow-none" 
@@ -48,7 +51,7 @@ export default function Navbar() {
         </button>
 
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="ftco-nav">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
             {navLinks.map((link) => (
               <li className="nav-item mx-lg-2" key={link.href}>
                 <Link 
@@ -60,6 +63,17 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="nav-item ms-lg-3">
+              <button 
+                onClick={() => {
+                  openDonation();
+                  setIsOpen(false);
+                }}
+                className="btn btn-primary rounded-pill px-4 py-2 fw-bold text-uppercase small border-0"
+              >
+                Donate
+              </button>
+            </li>
           </ul>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function Contact() {
                   <i className="icon-map-marker h4 mb-0"></i>
                 </div>
                 <h3 className="h5 fw-bold mb-3">Our Location</h3>
-                <p className="text-muted small mb-0">123 Charity Way, Warri, Nigeria</p>
+                <p className="text-muted small mb-0">Kigali, Rwanda</p>
               </div>
             </div>
             <div className="col-md-4 mb-4">
@@ -33,7 +33,7 @@ export default function Contact() {
                   <i className="icon-phone h4 mb-0"></i>
                 </div>
                 <h3 className="h5 fw-bold mb-3">Phone Number</h3>
-                <p className="text-muted small mb-0">+234 123 456 7890</p>
+                <p className="text-muted small mb-0">+250 ... ... ...</p>
               </div>
             </div>
             <div className="col-md-4 mb-4">
@@ -42,7 +42,7 @@ export default function Contact() {
                   <i className="icon-envelope h4 mb-0"></i>
                 </div>
                 <h3 className="h5 fw-bold mb-3">Email Address</h3>
-                <p className="text-muted small mb-0">info@charityorg.org</p>
+                <p className="text-muted small mb-0">info@healthrootngo.org</p>
               </div>
             </div>
           </div>

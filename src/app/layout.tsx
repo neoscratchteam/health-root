@@ -17,6 +17,7 @@ import "../styles/style.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import DonationWrapper from "@/components/DonationWrapper";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -32,12 +33,12 @@ const dosis = Dosis({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Hope Charity Organization',
-    default: 'Hope - Charity Organization',
+    template: '%s | Health Root NGO',
+    default: 'Health Root NGO - Healthy Young People Build a Healthy Community',
   },
-  description: "Every child deserves a chance to dream, grow, and thrive. Join us in making a difference in children's lives worldwide.",
-  keywords: ["charity", "donation", "children", "hope", "volunteer", "education", "nutrition"],
-  authors: [{ name: "Hope Charity" }],
+  description: "Health Root NGO is a youth-centered organization dedicated to promoting health awareness, youth empowerment, and community development in Rwanda.",
+  keywords: ["health", "NGO", "youth", "Rwanda", "Kigali", "empowerment", "education", "community"],
+  authors: [{ name: "Health Root NGO" }],
   viewport: "width=device-width, initial-scale=1",
 };
 
@@ -49,9 +50,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overpass.variable} ${dosis.variable}`}>
       <body className={overpass.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <DonationWrapper>
+          <Navbar />
+          {children}
+          <Footer />
+        </DonationWrapper>
       </body>
     </html>
   );

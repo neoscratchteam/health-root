@@ -5,8 +5,8 @@ import CTASection from '@/components/CTASection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Impact',
-  description: 'Read the stories of change and the achievements of Hope Charity Organization. See how your support is making a difference in children\'s lives.',
+  title: 'Our Impact | Health Root NGO',
+  description: 'Read the success stories of Health Root NGO in Rwanda. See how healthy young people are building a healthy community through our initiatives.',
 };
 
 interface Story {
@@ -19,21 +19,21 @@ interface Story {
 export default function OurImpact() {
   const stories: Story[] = [
     {
-      title: 'From Hunger to Hope: Feeding 10,000 Families',
-      img: 'hungryfam.jpeg',
-      text: 'Our feeding program has successfully reached thousands of families in rural areas, providing them with essential nutrition and hope for a better future. Through community-led initiatives, we are building sustainable food systems.',
+      title: 'Healthy Schools: A New Standard for Hygiene',
+      img: 'wed7.jpg',
+      text: 'Our school outreach program has successfully reached thousands of students in Kigali, providing them with essential health education and sanitation supplies. We are seeing a significant reduction in hygiene-related illness among participating schools.',
       order: 'reversed'
     },
     {
-      title: 'Education for Every Child: David’s Journey',
-      img: 'dav.jpg',
-      text: 'David, once unable to attend school, is now excelling in his studies thanks to our scholarship program. We believe that education is the key to breaking the cycle of poverty and empowering the next generation.',
+      title: 'Youth Leadership: Empowering Future Change-Makers',
+      img: 'ga8.jpg',
+      text: 'Through our leadership training, young people like Keza are now spearheading health campaigns in their own neighborhoods. We believe that empowering youth is the fastest way to build a resilient and healthy community.',
       order: 'normal'
     },
     {
-      title: 'Disaster Relief: Rebuilding After the Storm',
-      img: 'shelter.jpeg',
-      text: 'When disaster strikes, we are there to provide immediate relief and long-term support. Our reconstruction efforts have helped hundreds of families move from temporary shelters into safe, permanent homes.',
+      title: 'Clean Communities: The Impact of Sanitation Days',
+      img: 'ga6.jpg',
+      text: 'Our monthly community clean-up activities have transformed local environments, promoting a culture of sanitation and collective responsibility. Cleaner environments lead directly to healthier families and reduced disease transmission.',
       order: 'reversed'
     }
   ];
@@ -50,8 +50,8 @@ export default function OurImpact() {
         <div className="container">
           <div className="row mb-5 justify-content-center">
             <div className="col-md-8 text-center">
-              <h2 className="display-5 fw-bold mb-3">Some Of The Achievement Stories</h2>
-              <p className="lead text-muted">Every life we touch represents a story of resilience and transformation. Here are just a few examples of how your support is making a difference.</p>
+              <h2 className="display-5 fw-bold mb-3">Our Achievement Stories</h2>
+              <p className="lead text-muted">Every community we work with represents a story of resilience and transformation. Here are just a few examples of how Health Root NGO is making a difference.</p>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ export default function OurImpact() {
                   <div className="block-41-text">
                     <p className="text-muted lead mb-4">{story.text}</p>
                   </div>
-                  <Link href="/contact" className="btn btn-primary px-4 py-3 rounded-pill fw-bold shadow-sm">Read More Stories</Link>
+                  <Link href="/what-we-do" className="btn btn-primary px-4 py-3 rounded-pill fw-bold shadow-sm">View More Impact</Link>
                 </div>
               </div>
             </div>
@@ -83,8 +83,8 @@ export default function OurImpact() {
       </div>
 
       <CTASection 
-        title="Your support creates impact. Help us reach the next 10,000 children."
-        buttonText="See More Stories"
+        title="Your support drives this impact. Help us reach the next community."
+        buttonText="Support Our Mission"
       />
     </>
   );

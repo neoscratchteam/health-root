@@ -3,38 +3,39 @@ import Link from 'next/link';
 import Hero from '@/components/Hero';
 import CTASection from '@/components/CTASection';
 import { Metadata } from 'next';
+import DonateButton from '@/components/DonateButton';
 
 export const metadata: Metadata = {
-  title: 'Home | Hope Charity Organization',
-  description: 'Every child deserves a chance to dream, grow, and thrive—together, we can make it happen.',
+  title: 'Home | Health Root NGO',
+  description: 'Healthy Young People Build a Healthy Community. Empowering youth and improving community wellbeing through health education and action.',
 };
 
 export default function Home() {
   return (
     <>
       <Hero 
-        title="Every child deserves a chance to dream, grow, and thrive—together, we can make it happen." 
-        bgImage="/images/hom1.jpg"
+        title="Healthy Young People Build a Healthy Community" 
+        bgImage="/images/ga1.jpg"
       />
 
       <div className="site-section section-counter py-5 bg-white">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 order-lg-1 order-2 text-center text-lg-start">
-              <div className="block-48 p-5 rounded shadow-lg" style={{ backgroundColor: '#00796b', color: '#fff' }}>
-                <span className="block-48-text-1 d-block mb-2">Supported Over</span>
-                <div className="block-48-counter ftco-number display-2 fw-bold" data-number="1521901">1,521,901</div>
-                <span className="block-48-text-1 d-block mb-4 opacity-75">People in 100 Countries</span>
+              <div className="block-48 p-5 rounded shadow-lg" style={{ backgroundColor: '#0a2342', color: '#fff' }}>
+                <span className="block-48-text-1 d-block mb-2">Empowering Over</span>
+                <div className="block-48-counter ftco-number display-2 fw-bold" data-number="10000">10,000+</div>
+                <span className="block-48-text-1 d-block mb-4 opacity-75">Youth in Rwanda</span>
                 <p className="mb-0">
-                  <Link href="/what-we-do" className="btn btn-white px-4 py-3 rounded-pill fw-bold">View Our Program</Link>
+                  <Link href="/what-we-do" className="btn btn-white px-4 py-3 rounded-pill fw-bold" style={{ color: '#0a2342' }}>View Our Programs</Link>
                 </p>
               </div>
             </div>
 
             <div className="col-lg-6 order-lg-2 order-1 text-center text-lg-start mb-5 mb-lg-0 ps-lg-5">
-              <h2 className="display-4 fw-bold mb-4">Who Are We?</h2>
+              <h2 className="display-4 fw-bold mb-4">Welcome to Health Root NGO</h2>
               <p className="lead text-muted mb-4">
-                We are a dedicated team of passionate individuals working tirelessly to provide hope and support to children in need. Our vision is a world where every child has the resources they need to reach their full potential.
+                We are a community-based organization focused on improving health awareness, youth empowerment, and community development. We believe that informed and empowered youth can create healthier and stronger communities.
               </p>
               <p className="mb-0">
                 <Link href="/about" className="btn btn-primary px-5 py-3 rounded-pill fw-bold">Learn More About Us</Link>
@@ -47,24 +48,24 @@ export default function Home() {
       <section className="site-section bg-light">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold mb-3">Our Mission</h2>
+            <h2 className="display-5 fw-bold mb-3">Our Core Objectives</h2>
             <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>
-              Our mission is to create lasting change by addressing the fundamental needs of children through education, nutrition, health, and love.
+              Building a healthier, educated, responsible, and empowered community.
             </p>
           </div>
 
           <div className="row gy-4">
             {[
-              { img: 'food.png', title: 'Charity For Education', desc: 'Providing the tools and resources for children to learn and excel in school.' },
-              { img: 'book2.png', title: 'Food For Hungry', desc: 'Ensuring no child goes to bed hungry with our sustainable feeding programs.' },
-              { img: 'water (2).png', title: 'Treated Drinking Water', desc: 'Providing access to clean and safe drinking water for communities in need.', style: { width: '30px', height: '30px' } },
-              { img: 'medical2.png', title: 'Medical Checkups', desc: 'Regular health screenings and medical support for vulnerable children.' },
-              { img: 'house2.png', title: 'Good Shelter', desc: 'Building safe and secure homes for families and displaced children.' },
-              { img: 'love2.png', title: 'Give Love', desc: 'Emotional support and a nurturing environment for every child in our care.' },
+              { img: 'food.png', title: 'Health Education', desc: 'Educating young people about hygiene, disease prevention, and nutrition.' },
+              { img: 'book2.png', title: 'Youth Empowerment', desc: 'Developing leadership and communication skills among young people.' },
+              { img: 'water (2).png', title: 'Sanitation', desc: 'Promoting environmental cleanliness and community sanitation activities.', style: { width: '30px', height: '30px' } },
+              { img: 'medical2.png', title: 'Mental Wellness', desc: 'Promoting mental health awareness and emotional wellbeing for youth.' },
+              { img: 'house2.png', title: 'Social Responsibility', desc: 'Encouraging volunteerism and teamwork in community health development.' },
+              { img: 'love2.png', title: 'Equality & Respect', desc: 'Ensuring everyone has access to health information and support regardless of background.' },
             ].map((item, idx) => (
               <div className="col-md-4" key={idx}>
                 <div className="service-card p-4 bg-white rounded shadow-sm border-0 h-100 text-center transition-all hover-shadow">
-                  <div className="icon-wrap mb-4 d-inline-block p-3 rounded-circle" style={{ backgroundColor: 'rgba(0,121,107,0.1)' }}>
+                  <div className="icon-wrap mb-4 d-inline-block p-3 rounded-circle" style={{ backgroundColor: 'rgba(10,35,66,0.1)' }}>
                     <Image 
                       src={`/images/${item.img}`} 
                       alt={item.title} 
@@ -87,17 +88,17 @@ export default function Home() {
           <div className="row donation-section align-items-center bg-light rounded-lg overflow-hidden shadow-lg mx-0">
             <div className="col-md-6 px-0 position-relative" style={{ minHeight: '400px' }}>
               <Image 
-                src="/images/about1.jpg" 
-                alt="Child Image" 
+                src="/images/ga11.jpg" 
+                alt="Health Root Youth" 
                 fill 
                 style={{ objectFit: 'cover' }}
               />
             </div>
             <div className="col-md-6 p-5">
               <div className="donation-text">
-                <h2 className="display-5 fw-bold mb-4">Just For &#8358;1000 A Month You Can Change Someone's Life!</h2>
-                <p className="lead text-muted mb-4">Your small monthly contribution can provide a child with regular meals, school supplies, and a sense of security they've never known before.</p>
-                <Link href="/contact" className="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow">Donate Now</Link>
+                <h2 className="display-5 fw-bold mb-4">Be Part of the Change!</h2>
+                <p className="lead text-muted mb-4">Healthy young people are the foundation of a healthy and successful community. Join us as a member or volunteer today.</p>
+                <DonateButton>Support Our Mission</DonateButton>
               </div>
             </div>
           </div>
@@ -107,15 +108,15 @@ export default function Home() {
       <div className="site-section bg-light">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold mb-3">Our Causes</h2>
-            <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>Explore our latest initiatives and support our mission to bring positive change.</p>
+            <h2 className="display-5 fw-bold mb-3">Our Latest Activities</h2>
+            <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>Join our efforts in health awareness, clean-up activities, and youth training.</p>
           </div>
 
           <div className="row">
             {[
-              { img: 'ga6.jpg', title: 'Unsafe water sources remain a significant global health concern', desc: 'Help us build wells and filtration systems to provide safe water.' },
-              { img: 'ga3.jpg', title: 'Great increase in homelessness among children in the USA', desc: 'Supporting shelters and transitional housing for families in crisis.' },
-              { img: 'ga8.jpg', title: 'About 10.2M pry school-aged kids in Nigeria are not in school', desc: 'Providing scholarships and building schools to reduce the education gap.' },
+              { img: 'wed7.jpg', title: 'Community Health Awareness', desc: 'Conducting campaigns about personal hygiene and nutrition in local schools.' },
+              { img: 'ga6.jpg', title: 'Environmental Clean-Up', desc: 'Organizing sanitation and cleaning activities to promote a healthy environment.' },
+              { img: 'ga8.jpg', title: 'Youth Leadership Training', desc: 'Empowering young people with communication and leadership skills.' },
             ].map((cause, idx) => (
               <div className="col-12 col-sm-6 col-md-6 col-lg-4 mb-4" key={idx}>
                 <div className="card fundraise-item border-0 shadow-sm rounded-lg overflow-hidden h-100">
@@ -131,7 +132,7 @@ export default function Home() {
                   <div className="card-body p-4">
                     <h3 className="h5 fw-bold mb-3"><Link href="/what-we-do" className="text-dark text-decoration-none">{cause.title}</Link></h3>
                     <p className="card-text text-muted mb-4">{cause.desc}</p>
-                    <Link className="read_more fw-bold text-primary" href="/what-we-do">Read More &rarr;</Link>
+                    <Link className="read_more fw-bold text-primary" href="/what-we-do">Learn More &rarr;</Link>
                   </div>
                 </div>
               </div>
@@ -140,7 +141,10 @@ export default function Home() {
         </div>
       </div>
 
-      <CTASection />
+      <CTASection 
+        title="Ready to make an impact? Join Health Root NGO today."
+        buttonText="Get Involved"
+      />
     </>
   );
 }

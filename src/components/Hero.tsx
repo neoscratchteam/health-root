@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import DonateButton from './DonateButton';
 
 interface HeroProps {
   title: string;
@@ -32,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
           fill
           priority
           quality={95}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
           style={{ 
             objectFit: 'cover', 
             zIndex: -1,
@@ -71,6 +72,11 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
               >
                 {title}
               </h1>
+              {!compact && (
+                <div className="animate__animated animate__fadeInUp animate__delay-1s">
+                  <DonateButton className="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow-lg mt-3 border-0" />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,12 +1,13 @@
 /* Globals */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --primary: #00796b;
-  --accent: #f7ca44;
-  --secondary: #6c757d;
-  --light-bg: #f8f9fa;
-  --dark-bg: #1a1a1a;
+  --foreground: #111827;
+  --primary: #0a2342; /* Dark Blue */
+  --primary-rgb: 10, 35, 66;
+  --accent: #f39c12;  /* Orange */
+  --secondary: #3498db; /* Sky Blue */
+  --light-bg: #f8fafc;
+  --dark-bg: #0f172a;
 }
 
 html {

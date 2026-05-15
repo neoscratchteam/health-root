@@ -5,30 +5,31 @@ import CTASection from '@/components/CTASection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Stay updated with the latest news, success stories, and the impact of Hope Charity Organization around the world.',
+  title: 'Blog | Health Root NGO',
+  description: 'Stay updated with the latest news, success stories, and the impact of Health Root NGO in community development and health awareness.',
 };
 
 interface Post {
   img: string;
   date: string;
   title: string;
+  category: string;
 }
 
 export default function Blog() {
   const posts: Post[] = [
-    { img: 'ga3.jpg', date: 'May 12, 2026', title: 'Great increase in homelessness among children in the USA' },
-    { img: 'ga6.jpg', date: 'May 10, 2026', title: 'Unsafe water sources remain a significant global health concern' },
-    { img: 'ga8.jpg', date: 'May 08, 2026', title: 'About 10.2M pry school-aged kids in Nigeria are not in school' },
-    { img: 'ga6.jpg', date: 'May 05, 2026', title: 'Unsafe water sources remain a significant global health concern' },
-    { img: 'ga8.jpg', date: 'May 03, 2026', title: 'About 10.2M pry school-aged kids in Nigeria are not in school' },
-    { img: 'ga3.jpg', date: 'May 01, 2026', title: 'Great increase in homelessness among children in the USA' },
+    { img: 'ga1.jpg', date: 'May 12, 2026', title: 'The Importance of Personal Hygiene in Schools', category: 'Health Education' },
+    { img: 'ga6.jpg', date: 'May 10, 2026', title: 'Building a Greener Kigali: Our Tree Planting Success', category: 'Environment' },
+    { img: 'ga8.jpg', date: 'May 08, 2026', title: 'Empowering Young Leaders through Mentorship', category: 'Youth' },
+    { img: 'ga11.jpg', date: 'May 05, 2026', title: 'How Sanitation Drives Community Wellness', category: 'Health' },
+    { img: 'ga13.jpg', date: 'May 03, 2026', title: 'Breaking the Stigma: Mental Health Awareness for Teens', category: 'Wellness' },
+    { img: 'wed7.jpg', date: 'May 01, 2026', title: 'Nutrition Tips for Developing Communities', category: 'Nutrition' },
   ];
 
   return (
     <>
       <Hero 
-        title="Our Blog" 
+        title="Our Blog & News" 
         bgImage="/images/hom1.jpg"
         compact={true}
       />
@@ -36,9 +37,9 @@ export default function Blog() {
       <div className="site-section bg-light">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold mb-3">Latest News</h2>
+            <h2 className="display-5 fw-bold mb-3">Latest Updates</h2>
             <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>
-              Stay updated with our latest activities, success stories, and the impact of your contributions around the world.
+              Stay updated with our latest activities, success stories, and the impact of our programs in Rwanda.
             </p>
           </div>
 
@@ -56,6 +57,11 @@ export default function Blog() {
                         style={{ objectFit: 'cover' }} 
                       />
                     </Link>
+                    <div className="position-absolute top-0 start-0 m-3">
+                      <span className="badge bg-secondary px-3 py-2 rounded-pill shadow-sm">
+                        {post.category}
+                      </span>
+                    </div>
                     <div className="position-absolute bottom-0 start-0 bg-primary text-white px-3 py-1 small fw-bold" style={{ zIndex: 1 }}>
                       {post.date}
                     </div>
@@ -67,7 +73,7 @@ export default function Blog() {
                       </Link>
                     </h3>
                     <p className="card-text text-muted small mb-4">
-                      We are witnessing a significant change in the communities we serve. Read more about our recent findings and how we are adapting our programs.
+                      Explore our recent activities and learn more about how we are working with communities to promote healthy lifestyles and youth empowerment.
                     </p>
                     <Link className="btn btn-link text-primary fw-bold p-0 text-decoration-none" href="/blog">
                       Read More &rarr;
@@ -81,7 +87,7 @@ export default function Blog() {
       </div>
 
       <CTASection 
-        title="Subscribe to our newsletter for weekly updates on our impact."
+        title="Stay informed. Subscribe to our newsletter for the latest stories of impact."
         buttonText="Subscribe Now"
       />
     </>
