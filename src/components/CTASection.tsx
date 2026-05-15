@@ -16,7 +16,7 @@ interface CTASectionProps {
 const CTASection: React.FC<CTASectionProps> = ({ 
   title = "Every child deserves a chance to dream, grow, and thrive—together, we can make it happen.", 
   buttonText = "Donate Now", 
-  bgImage = "/images/home1.jpg" 
+  bgImage = "https://i.pinimg.com/736x/4f/49/ce/4f49cec56a11d20b2f44662bbf7f354b.jpg" 
 }) => {
   const { openDonation } = useDonation();
 
@@ -24,20 +24,22 @@ const CTASection: React.FC<CTASectionProps> = ({
     <section className="cta-section py-5 position-relative" style={{ 
       color: '#fff',
       padding: '100px 0',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      backgroundColor: 'transparent'
     }}>
       <Image
         src={bgImage}
         alt="CTA Background"
         fill
+        unoptimized={true}
         style={{ 
           objectFit: 'cover', 
-          zIndex: -1,
+          zIndex: 0,
           filter: 'brightness(0.3)'
         }}
         sizes="100vw"
       />
-      <div className="container text-center" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <h2 className="display-4 fw-bold mb-4 animate__animated animate__fadeIn">{title}</h2>

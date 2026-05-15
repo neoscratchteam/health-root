@@ -10,13 +10,13 @@ interface HeroProps {
   compact?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compact = false }) => {
+const Hero: React.FC<HeroProps> = ({ title, bgImage = 'https://i.pinimg.com/736x/4f/49/ce/4f49cec56a11d20b2f44662bbf7f354b.jpg', compact = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className="block-31" style={{ position: 'relative' }}>
       <div 
-        className={`block-30 ${compact ? 'block-30-sm' : ''} item`} 
+        className={`block-30 no-overlay ${compact ? 'block-30-sm' : ''} item`} 
         style={{ 
           display: 'flex',
           alignItems: 'center',
@@ -24,7 +24,7 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
           minHeight: compact ? '400px' : '80vh',
           position: 'relative',
           overflow: 'hidden',
-          backgroundColor: '#1a1a1a' // Dark background while loading
+          backgroundColor: 'transparent'
         }}
       >
         <Image
@@ -33,14 +33,10 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
           fill
           priority
           quality={95}
-          onLoad={() => setIsLoaded(true)}
+          unoptimized={true}
           style={{ 
             objectFit: 'cover', 
-            zIndex: -1,
-            opacity: isLoaded ? 1 : 0,
-            transition: 'opacity 0.8s ease-in-out',
-            transform: isLoaded ? 'scale(1)' : 'scale(1.05)',
-            filter: isLoaded ? 'none' : 'blur(10px)'
+            zIndex: 0,
           }}
           sizes="100vw"
         />
@@ -52,10 +48,10 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/hom1.jpg', compac
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(0,0,0,0.4)',
-            zIndex: 0
+            zIndex: 1
           }}
         />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row align-items-center justify-content-center text-center">
             <div className="col-md-9">
               <h1 
