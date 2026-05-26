@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="col-lg-4 col-md-6">
             <div className="footer-brand mb-4">
               <h2 className="fw-bold text-white fs-3 mb-3">HEALTH ROOT<span className="text-secondary"> NGO</span></h2>
-              <p className="text-muted small">
+              <p className="text-light opacity-75 small">
                 Healthy Young People Build a Healthy Community. We are committed to empowering youth and improving community wellbeing through education, awareness, and action.
               </p>
             </div>
@@ -27,13 +27,13 @@ export default function Footer() {
           <div className="col-lg-2 col-md-6">
             <h3 className="h5 fw-bold mb-4 text-white">Quick Links</h3>
             <ul className="list-unstyled footer-links">
-              <li className="mb-2"><Link href="/" className="text-muted text-decoration-none hover-text-white transition-all">Home</Link></li>
-              <li className="mb-2"><Link href="/about" className="text-muted text-decoration-none hover-text-white transition-all">About Us</Link></li>
-              <li className="mb-2"><Link href="/what-we-do" className="text-muted text-decoration-none hover-text-white transition-all">Our Programs</Link></li>
-              <li className="mb-2"><Link href="/our-impact" className="text-muted text-decoration-none hover-text-white transition-all">Our Impact</Link></li>
-              <li className="mb-2"><Link href="/gallery" className="text-muted text-decoration-none hover-text-white transition-all">Gallery</Link></li>
-              <li className="mb-2"><Link href="/blog" className="text-muted text-decoration-none hover-text-white transition-all">Blog</Link></li>
-              <li className="mb-2"><Link href="/contact" className="text-muted text-decoration-none hover-text-white transition-all">Contact</Link></li>
+              <li className="mb-2"><Link href="/" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Home</Link></li>
+              <li className="mb-2"><Link href="/about" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">About Us</Link></li>
+              <li className="mb-2"><Link href="/what-we-do" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Our Programs</Link></li>
+              <li className="mb-2"><Link href="/our-impact" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Our Impact</Link></li>
+              <li className="mb-2"><Link href="/gallery" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Gallery</Link></li>
+              <li className="mb-2"><Link href="/blog" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Blog</Link></li>
+              <li className="mb-2"><Link href="/contact" className="text-light opacity-75 text-decoration-none hover-text-white transition-all">Contact</Link></li>
             </ul>
           </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
               <div>
                 <Link href="/what-we-do" className="text-white text-decoration-none small fw-bold d-block hover-text-primary transition-all">Community Clean-up in Kigali</Link>
-                <small className="text-muted">May 12, 2026</small>
+                <small className="text-light opacity-75">May 12, 2026</small>
               </div>
             </div>
             <div className="recent-post mb-3 d-flex gap-3">
@@ -64,7 +64,7 @@ export default function Footer() {
               </div>
               <div>
                 <Link href="/what-we-do" className="text-white text-decoration-none small fw-bold d-block hover-text-primary transition-all">Youth Leadership Workshop</Link>
-                <small className="text-muted">May 10, 2026</small>
+                <small className="text-light opacity-75">May 10, 2026</small>
               </div>
             </div>
           </div>
@@ -74,22 +74,22 @@ export default function Footer() {
             <ul className="list-unstyled footer-contact">
               <li className="mb-3 d-flex gap-3">
                 <i className="icon-map-marker text-secondary mt-1"></i>
-                <span className="text-muted small">Kigali, Rwanda</span>
+                <span className="text-light small">Kigali, Rwanda</span>
               </li>
               <li className="mb-3 d-flex gap-3">
                 <i className="icon-phone text-secondary mt-1"></i>
-                <span className="text-muted small">+250 780 676 289</span>
+                <span className="text-light small">+250 780 676 289</span>
               </li>
               <li className="mb-3 d-flex gap-3">
                 <i className="icon-envelope text-secondary mt-1"></i>
-                <span className="text-muted small">info@healthrootngo.org</span>
+                <span className="text-light small">info@healthrootngo.org</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom border-top border-secondary mt-5 pt-4 text-center">
-          <p className="text-muted small mb-0">
+          <p className="text-light opacity-75 small mb-0">
             &copy; {currentYear} HEALTH ROOT NGO. All rights reserved. Healthy Young People Build a Healthy Community.
           </p>
         </div>
