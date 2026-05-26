@@ -39,16 +39,15 @@ export default function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark fixed-top transition-all ${scrolled ? 'bg-dark shadow-lg py-2' : 'bg-transparent py-4'}`} id="ftco-navbar">
       <div className="container">
-        <Link href="/" className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-white">
+        <Link href="/" className="navbar-brand d-flex align-items-center">
           <Image 
             src="/logo.png" 
             alt="Health Root NGO Logo" 
-            width={40} 
-            height={40} 
+            width={55} 
+            height={55} 
             className="d-inline-block align-top rounded-circle"
             style={{ objectFit: 'contain' }}
           />
-          <span>HEALTH ROOT<span className="text-secondary"> NGO</span></span>
         </Link>
         <button 
           className="navbar-toggler border-0 shadow-none" 
