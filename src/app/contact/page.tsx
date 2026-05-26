@@ -33,7 +33,7 @@ export default function Contact() {
                   <i className="icon-phone h4 mb-0"></i>
                 </div>
                 <h3 className="h5 fw-bold mb-3">Phone Number</h3>
-                <p className="text-muted small mb-0">+250 ... ... ...</p>
+                <p className="text-muted small mb-0">+250 780 676 289</p>
               </div>
             </div>
             <div className="col-md-4 mb-4">

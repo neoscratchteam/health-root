@@ -78,7 +78,7 @@ export default function Footer() {
               </li>
               <li className="mb-3 d-flex gap-3">
                 <i className="icon-phone text-secondary mt-1"></i>
-                <span className="text-muted small">+250 ... ... ...</span>
+                <span className="text-muted small">+250 780 676 289</span>
               </li>
               <li className="mb-3 d-flex gap-3">
                 <i className="icon-envelope text-secondary mt-1"></i>
