@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -27,6 +28,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Team', href: '/team' },
     { name: 'What we do', href: '/what-we-do' },
     { name: 'Our impact', href: '/our-impact' },
     { name: 'Gallery', href: '/gallery' },
@@ -37,8 +39,16 @@ export default function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark fixed-top transition-all ${scrolled ? 'bg-dark shadow-lg py-2' : 'bg-transparent py-4'}`} id="ftco-navbar">
       <div className="container">
-        <Link href="/" className="navbar-brand fw-bold fs-3 text-white">
-          HEALTH ROOT<span className="text-secondary"> NGO</span>
+        <Link href="/" className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-white">
+          <Image 
+            src="/logo.png" 
+            alt="Health Root NGO Logo" 
+            width={40} 
+            height={40} 
+            className="d-inline-block align-top rounded-circle"
+            style={{ objectFit: 'contain' }}
+          />
+          <span>HEALTH ROOT<span className="text-secondary"> NGO</span></span>
         </Link>
         <button 
           className="navbar-toggler border-0 shadow-none" 
