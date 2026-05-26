@@ -41,7 +41,7 @@ const CTASection: React.FC<CTASectionProps> = ({
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <h2 className="display-4 fw-bold mb-4 animate__animated animate__fadeIn">{title}</h2>
+            <h2 className="display-4 fw-bold mb-4 text-white animate__animated animate__fadeIn">{title}</h2>
             <Link 
               href="/donate"
               className="btn btn-lg btn-white px-5 py-3 rounded-pill fw-bold shadow-lg hover-scale border-0"
