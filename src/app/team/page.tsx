@@ -20,13 +20,13 @@ export default function Team() {
   const teamMembers: TeamMember[] = [
     {
       name: 'Asante Seringe',
-      role: 'President',
+      role: 'President & Founder',
       image: '/teams/president.png',
       bio: 'Leading the organization with a vision to empower youth and build healthier communities.',
     },
     {
-      name: 'Prof. Jean Bosco',
-      role: 'Executive Director & Founder',
+      name: 'Jean Bosco',
+      role: 'Executive Director',
       image: '/teams/professor.png',
       bio: 'Providing strategic leadership and academic guidance to empower youth-driven health initiatives across Rwanda.',
     },
