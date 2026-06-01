@@ -19,6 +19,12 @@ interface TeamMember {
 export default function Team() {
   const teamMembers: TeamMember[] = [
     {
+      name: 'Asante Seringe',
+      role: 'President',
+      image: '/teams/president.png',
+      bio: 'Leading the organization with a vision to empower youth and build healthier communities.',
+    },
+    {
       name: 'Prof. Jean Bosco',
       role: 'Executive Director & Founder',
       image: '/teams/professor.png',

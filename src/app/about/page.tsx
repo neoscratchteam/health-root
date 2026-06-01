@@ -33,7 +33,7 @@ export default function About() {
             <div className="col-md-7 order-md-2 mb-5 mb-md-0">
               <div className="position-relative" style={{ minHeight: '400px' }}>
                 <Image 
-                  src="/images/about1.jpg" 
+                  src="/teams/work.png" 
                   alt="Health Root Story" 
                   fill 
                   className="rounded shadow-lg" 
