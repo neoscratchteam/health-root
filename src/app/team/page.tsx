@@ -19,25 +19,25 @@ interface TeamMember {
 export default function Team() {
   const teamMembers: TeamMember[] = [
     {
-      name: 'Asante Seringe',
+      name: 'Asante Serge',
       role: 'President & Founder',
       image: '/teams/president.png',
       bio: 'Leading the organization with a vision to empower youth and build healthier communities.',
     },
     {
-      name: 'Jean Bosco',
+      name: 'Habumugisha Elie',
       role: 'Executive Director',
       image: '/teams/professor.png',
       bio: 'Providing strategic leadership and academic guidance to empower youth-driven health initiatives across Rwanda.',
     },
     {
-      name: 'Marie Claire Uwera',
+      name: 'Ntwali Samuel',
       role: 'Vice President',
       image: '/teams/vice presdent.png',
       bio: 'Leading project development, coordinating stakeholder partnerships, and ensuring community program success.',
     },
     {
-      name: 'Emery Niyonshuti',
+      name: 'Irasubiza Manzi Hubert',
       role: 'Executive Secretary',
       image: '/teams/secretary.png',
       bio: 'Managing administrative operations, communications, and logistical planning for all major organizational activities.',
