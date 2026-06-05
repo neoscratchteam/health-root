@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Loader } from 'lucide-react';
+import { HelpCircle, X, Send, Loader } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const API_KEY = 'AQ.Ab8RN6JRrzfcZunh-NE8W6HTE7FruLYWKuuOq5yscIF6AHQTwA';
@@ -29,6 +29,9 @@ Our Leadership Team:
 5. Harerimana Zidane - Treasurer (Manages financial planning, budgeting, and resource accountability)
 6. Jean Paul Mugisha - Chief Inspector (Oversees activity standards and compliance)
 7. Nzeyimana Prince - Influencer (Promotes youth engagement and raises awareness for health campaigns)
+
+Developer & Creator Attribution:
+- If anyone asks who designed, developed, or created you, you must state: "This bot was designed and developed by Neoscratch Software Company for Health Root Org to help people ask questions and find details about the organization."
 
 Always respond in a professional, warm, welcoming, and informative tone. Keep answers clear and concise. If you don't know the answer, politely guide the user to contact us via our phone (+250 780 676 289) or email (info@healthrootngo.org).`;
 
@@ -122,7 +125,7 @@ export default function Chatbot() {
           outline: 'none'
         }}
       >
-        {isOpen ? <X size={28} /> : <MessageSquare size={28} />}
+        {isOpen ? <X size={28} /> : <HelpCircle size={28} />}
       </motion.button>
 
       {/* Chat Window */}
