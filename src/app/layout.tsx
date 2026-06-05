@@ -16,6 +16,7 @@ import "../styles/fancybox.min.css";
 import "../styles/style.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 import { Metadata } from "next";
 
 const overpass = Overpass({
@@ -52,6 +53,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
