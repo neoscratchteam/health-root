@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HelpCircle, X, Send, Loader } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const API_KEY = 'AQ.Ab8RN6JRrzfcZunh-NE8W6HTE7FruLYWKuuOq5yscIF6AHQTwA';
 
@@ -19,7 +20,36 @@ Key Information about Health Root NGO:
 - Location: Kigali, Rwanda
 - Contact Phone: +250 780 676 289
 - Email Address: info@healthrootngo.org
-- Core Programs: Health Education, Sanitation, Youth Workshops, and Community Outreach (e.g. tree planting, community clean-up, mental wellness sessions).
+
+Our Vision:
+"To build a healthier, educated, responsible, and empowered community where young people actively contribute to positive health and social development."
+
+Our Mission & Goals:
+- Promote health education and awareness.
+- Support youth empowerment and leadership.
+- Encourage disease prevention and healthy living.
+- Improve community participation in health activities.
+
+Our Core Values:
+- Integrity (honesty, responsibility, transparency)
+- Respect (respect for all people regardless of age, gender, or background)
+- Teamwork (collaboration creates stronger communities)
+- Innovation (creative and new ideas for solving community health problems)
+- Community Service (committed to helping communities improve wellbeing)
+- Equality (everyone deserves access to health info and support)
+
+Our Core Programs:
+1. Health Awareness: Campaigns on personal hygiene, nutrition, reproductive health, and disease prevention in schools and communities.
+2. Youth Training: Empowering young people with leadership, public speaking, and community engagement skills.
+3. Environmental Protection: Organizing community clean-ups and tree planting activities to promote sanitation and conservation.
+
+Our Projects:
+- School Health Outreach (Ongoing): Educating students in Kigali schools on personal hygiene and mental wellness.
+- Community Sanitation Day (Ongoing): Monthly cleaning activities in local communities to promote a healthy living environment.
+- Youth Mentorship Program (Ongoing): A 6-month training program for young leaders in community health development.
+- Drug Abuse Prevention (Ongoing): Awareness campaigns targeting youth to prevent substance abuse.
+- Tree Planting Initiative (Completed): Greenery restoration and climate awareness.
+- Nutrition Workshop (Completed): Teaching families about balanced diets and sustainable food sources.
 
 Our Leadership Team:
 1. Asante Serge - President & Founder (Visionary leader empowering youth and building healthier communities)
@@ -34,6 +64,16 @@ Developer & Creator Attribution:
 - If anyone asks who designed, developed, or created you, you must state: "This bot was designed and developed by Neoscratch Software Company for Health Root Org to help people ask questions and find details about the organization."
 
 Always respond in a professional, warm, welcoming, and informative tone. Keep answers clear and concise. If you don't know the answer, politely guide the user to contact us via our phone (+250 780 676 289) or email (info@healthrootngo.org).`;
+
+const renderMessageText = (text: string) => {
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) {
+      return <strong key={i}>{part}</strong>;
+    }
+    return part;
+  });
+};
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -161,14 +201,27 @@ export default function Chatbot() {
                 gap: '12px'
               }}
             >
-              <div
-                style={{
-                  width: '10px',
-                  height: '10px',
-                  borderRadius: '5px',
-                  backgroundColor: '#4cd964'
-                }}
-              />
+              <div style={{ position: 'relative', width: '40px', height: '40px' }}>
+                <Image
+                  src="/logo.png"
+                  alt="Health Root NGO Logo"
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: '50%', objectFit: 'contain', backgroundColor: '#fff', padding: '2px' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    right: '0',
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    backgroundColor: '#4cd964',
+                    border: '2px solid #2f89fc'
+                  }}
+                />
+              </div>
               <div>
                 <h4 style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>Health Root Bot</h4>
                 <p style={{ margin: 0, fontSize: '12px', opacity: 0.8 }}>Online • Ask anything about us</p>
@@ -203,7 +256,7 @@ export default function Chatbot() {
                     whiteSpace: 'pre-line'
                   }}
                 >
-                  {msg.text}
+                  {renderMessageText(msg.text)}
                 </div>
               ))}
               {loading && (
