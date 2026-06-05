@@ -257,36 +257,61 @@ export default function Chatbot() {
                 <div
                   key={index}
                   style={{
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    gap: '8px',
                     alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                    maxWidth: '80%',
-                    backgroundColor: msg.role === 'user' ? '#2f89fc' : '#fff',
-                    color: msg.role === 'user' ? '#fff' : '#333',
-                    padding: '10px 14px',
-                    borderRadius: msg.role === 'user' ? '18px 18px 2px 18px' : '18px 18px 18px 2px',
-                    fontSize: '14px',
-                    lineHeight: '1.4',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
-                    whiteSpace: 'pre-line'
+                    maxWidth: '85%'
                   }}
                 >
-                  {renderMessageText(msg.text)}
+                  {msg.role === 'model' && (
+                    <Image
+                      src="/logo.png"
+                      alt="Health Root NGO Logo"
+                      width={28}
+                      height={28}
+                      style={{ borderRadius: '50%', objectFit: 'contain', backgroundColor: '#fff', padding: '1px', border: '1px solid #eee', flexShrink: 0 }}
+                    />
+                  )}
+                  <div
+                    style={{
+                      backgroundColor: msg.role === 'user' ? '#2f89fc' : '#fff',
+                      color: msg.role === 'user' ? '#fff' : '#333',
+                      padding: '10px 14px',
+                      borderRadius: msg.role === 'user' ? '18px 18px 2px 18px' : '18px 18px 18px 2px',
+                      fontSize: '14px',
+                      lineHeight: '1.4',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
+                      whiteSpace: 'pre-line'
+                    }}
+                  >
+                    {renderMessageText(msg.text)}
+                  </div>
                 </div>
               ))}
               {loading && (
-                <div
-                  style={{
-                    alignSelf: 'flex-start',
-                    backgroundColor: '#fff',
-                    padding: '10px 14px',
-                    borderRadius: '18px 18px 18px 2px',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px'
-                  }}
-                >
-                  <Loader size={16} className="animate-spin text-primary" style={{ animation: 'spin 1s linear infinite' }} />
-                  <span style={{ fontSize: '13px', color: '#999' }}>Typing...</span>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', alignSelf: 'flex-start', maxWidth: '85%' }}>
+                  <Image
+                    src="/logo.png"
+                    alt="Health Root NGO Logo"
+                    width={28}
+                    height={28}
+                    style={{ borderRadius: '50%', objectFit: 'contain', backgroundColor: '#fff', padding: '1px', border: '1px solid #eee', flexShrink: 0 }}
+                  />
+                  <div
+                    style={{
+                      backgroundColor: '#fff',
+                      padding: '10px 14px',
+                      borderRadius: '18px 18px 18px 2px',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <Loader size={14} className="animate-spin text-primary" style={{ animation: 'spin 1s linear infinite' }} />
+                    <span style={{ fontSize: '13px', color: '#999' }}>Typing...</span>
+                  </div>
                 </div>
               )}
               <div ref={messagesEndRef} />
