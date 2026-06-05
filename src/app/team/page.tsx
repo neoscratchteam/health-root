@@ -43,10 +43,22 @@ export default function Team() {
       bio: 'Managing administrative operations, communications, and logistical planning for all major organizational activities.',
     },
     {
+      name: 'Harerimana Zidane',
+      role: 'Treasurer',
+      image: '/teams/ni treasurer AN.harerimana zidane.png',
+      bio: 'Managing financial planning, budgeting, and auditing to ensure resource accountability and programmatic support.',
+    },
+    {
       name: 'Jean Paul Mugisha',
       role: 'Chief Inspector',
       image: '/teams/inspector.png',
       bio: 'Overseeing activity standards, compliance, and auditing health campaigns for quality and impact.',
+    },
+    {
+      name: 'Nzeyimana Prince',
+      role: 'Influencer',
+      image: '/teams/nzeyimana prince.png',
+      bio: 'Promoting youth engagement, raising awareness for health campaigns, and inspiring positive community action.',
     },
   ];
 
