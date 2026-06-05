@@ -15,18 +15,8 @@ const CATEGORIES = ['All', 'Health Education', 'Sanitation', 'Youth Workshops', 
 
 export default function GalleryContent() {
   const images: GalleryImage[] = [
-    { src: 'ga1.jpg', title: 'Health Awareness Campaign', category: 'Health Education' },
-    { src: 'ga2.jpg', title: 'School Outreach', category: 'Health Education' },
-    { src: 'ga6.jpg', title: 'Community Clean-Up', category: 'Sanitation' },
-    { src: 'ga8.jpg', title: 'Youth Training Program', category: 'Youth Workshops' },
-    { src: 'ga11.jpg', title: 'Tree Planting', category: 'Sanitation' },
-    { src: 'ga13.jpg', title: 'Mental Wellness Session', category: 'Health Education' },
-    { src: 'ga7.jpg', title: 'Nutrition Workshop', category: 'Health Education' },
-    { src: 'gal.jpeg', title: 'Volunteer Activities', category: 'Community Outreach' },
-    { src: 'gal3.jpg', title: 'Youth Mentorship', category: 'Youth Workshops' },
-    { src: 'ga3.jpg', title: 'Community Outreach', category: 'Community Outreach' },
-    { src: 'ga12.jpg', title: 'Leadership Seminar', category: 'Youth Workshops' },
-    { src: 'ga4.jpg', title: 'Health Education', category: 'Health Education' }
+    { src: '/teams/all.png', title: 'Health Root NGO Team Group', category: 'Community Outreach' },
+    { src: '/teams/work.png', title: 'Team Activity Session', category: 'Youth Workshops' }
   ];
 
   const [activeCategory, setActiveCategory] = useState('All');
@@ -116,7 +106,7 @@ export default function GalleryContent() {
                   onClick={() => setLightboxIndex(idx)}
                 >
                   <Image 
-                    src={`/images/${img.src}`} 
+                    src={img.src.startsWith('/') ? img.src : `/images/${img.src}`} 
                     alt={img.title} 
                     fill 
                     className="transition-all hover-scale" 
@@ -180,7 +170,7 @@ export default function GalleryContent() {
           <div className="position-relative d-flex flex-column align-items-center justify-content-center text-center p-3" style={{ maxWidth: '90%', maxHeight: '80%' }}>
             <div className="position-relative" style={{ width: '80vw', height: '60vh', maxWidth: '900px' }}>
               <Image 
-                src={`/images/${filteredImages[lightboxIndex].src}`} 
+                src={filteredImages[lightboxIndex].src.startsWith('/') ? filteredImages[lightboxIndex].src : `/images/${filteredImages[lightboxIndex].src}`} 
                 alt={filteredImages[lightboxIndex].title} 
                 fill 
                 style={{ objectFit: 'contain' }}
