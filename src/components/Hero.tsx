@@ -11,7 +11,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/event2.jpeg', compact = false }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   return (
     <div className="block-31" style={{ position: 'relative' }}>
@@ -32,8 +32,9 @@ const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/event2.jpeg', com
           alt={title}
           fill
           priority
-          quality={95}
+          quality={100}
           unoptimized={true}
+          onLoad={() => setIsLoaded(true)}
           style={{ 
             objectFit: 'cover', 
             zIndex: 0,
