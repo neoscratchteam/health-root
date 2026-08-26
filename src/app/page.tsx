@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Hero 
         title="Healthy Young People Build a Healthy Community" 
-        bgImage="https://i.pinimg.com/736x/4f/49/ce/4f49cec56a11d20b2f44662bbf7f354b.jpg"
+        bgImage="/images/event2.jpeg"
       />
 
       <div className="site-section section-counter py-5 bg-white">

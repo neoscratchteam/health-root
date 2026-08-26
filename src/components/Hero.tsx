@@ -10,7 +10,7 @@ interface HeroProps {
   compact?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ title, bgImage = 'https://i.pinimg.com/736x/4f/49/ce/4f49cec56a11d20b2f44662bbf7f354b.jpg', compact = false }) => {
+const Hero: React.FC<HeroProps> = ({ title, bgImage = '/images/event2.jpeg', compact = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
